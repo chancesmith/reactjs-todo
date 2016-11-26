@@ -20,6 +20,7 @@
 	  }
 	  .todo-list ul li span{
 	    padding: 0 0 0 10px;
+	    font-family: 'Arial', sans-serif;
 	  }
 	  .todo-list ul li i{
 	    font-size: 18px;

@@ -2,8 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 
 // components
-import { TodoForm } from './TodoForm';
 import { TodoList } from './TodoList';
+
+const TodoForm = ({addTodoItem}) => {
+  // Input Tracker
+  let input;
+  // Return JSX
+  return (
+    <div className="todo-form">
+      <input type="text" ref={node => { input = node;}} placeholder="add todo"/>
+      <button onClick={() => { if(input.value !== "")addTodoItem(input.value); input.value = '';}}> <i className="fa fa-plus"></i> </button>
+    </div>
+  );
+};
 
 class App extends Component {
   constructor(props) {
@@ -27,8 +38,18 @@ class App extends Component {
         }]
     };
 
+    this.addTodoItem = this.addTodoItem.bind(this);
     this.deleteTodoItem = this.deleteTodoItem.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
+  }
+
+  addTodoItem(val){
+    // Assemble data
+    const todo = {text: val, complete: false}
+    // Update data
+    this.state.todos.push(todo);
+    // Update state
+    this.setState({todos: this.state.todos});
   }
 
   deleteTodoItem(index){
@@ -48,7 +69,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Todo List</h2>
-          <TodoForm/>
+          <TodoForm addTodoItem={this.addTodoItem}/>
         </div>
         <div className="App-body">
           <TodoList todos={this.state.todos} deleteTodoItem={this.deleteTodoItem} toggleComplete={this.toggleComplete}/>
