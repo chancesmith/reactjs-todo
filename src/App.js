@@ -7,25 +7,40 @@ import { TodoList } from './TodoList';
 
 class App extends Component {
   constructor(props) {
-        super(props);
-        this.state = {
-            list: [{
-              todo: "get milk",
-              complete: false
-            },{
-              todo: "get cheese",
-              complete: false
-            },{
-              todo: "get greek yogurt",
-              complete: true
-            },{
-              todo: "get hot chocolate",
-              complete: false
-            },{
-              todo: "make cake",
-              complete: true
-            }]
-        };
+    super(props);
+    this.state = {
+        todos: [{
+          text: "get milk",
+          complete: false
+        },{
+          text: "get cheese",
+          complete: false
+        },{
+          text: "get greek yogurt",
+          complete: true
+        },{
+          text: "get hot chocolate",
+          complete: false
+        },{
+          text: "make cake",
+          complete: true
+        }]
+    };
+
+    this.deleteTodoItem = this.deleteTodoItem.bind(this);
+    this.toggleComplete = this.toggleComplete.bind(this);
+  }
+
+  deleteTodoItem(index){
+    this.setState({
+      todos: this.state.todos.filter((_, i) => i !== index)
+    })
+  }
+
+  toggleComplete(index){
+    var stateCopy = Object.assign({}, this.state);
+    stateCopy.todos[index].complete = stateCopy.todos[index].complete ? false : true;
+    this.setState(stateCopy);
   }
 
   render() {
@@ -36,7 +51,7 @@ class App extends Component {
           <TodoForm/>
         </div>
         <div className="App-body">
-          <TodoList list={this.state.list}/>
+          <TodoList todos={this.state.todos} deleteTodoItem={this.deleteTodoItem} toggleComplete={this.toggleComplete}/>
         </div>
       </div>
     );
