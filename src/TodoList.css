@@ -15,8 +15,8 @@
 		.todo-list ul li.is-done {
 		  opacity: .3;
 		}
-	  .todo-list ul li:hover span {
-	    text-decoration: line-through;
+	  .todo-list ul li:hover .wrap {
+	    background: #c7c7c7;
 	  }
 	  .todo-list ul li span{
 	    padding: 0 0 0 10px;

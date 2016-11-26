@@ -10,8 +10,8 @@ const TodoForm = ({addTodoItem}) => {
   // Return JSX
   return (
     <div className="todo-form">
-      <input type="text" ref={node => { input = node;}} placeholder="add todo"/>
-      <button onClick={() => { if(input.value !== "")addTodoItem(input.value); input.value = '';}}> <i className="fa fa-plus"></i> </button>
+      <input className="add-text" type="text" ref={node => { input = node;}} placeholder="add todo"/>
+      <a className="add-btn" onClick={() => { if(input.value !== "")addTodoItem(input.value); input.value = '';}}> <i className="fa fa-plus"></i> </a>
     </div>
   );
 };

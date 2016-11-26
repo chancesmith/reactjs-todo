@@ -14,3 +14,17 @@
 }
 
 .todo-form {}
+
+.add-btn {
+  padding: 6px 6px 3px;
+  display: inline-block;
+  position: absolute;
+  /* border: 1px solid white; */
+  margin: 0 0 0 8px;
+  background: white;
+  color: #222;
+}
+
+.add-text {
+	padding: 5px;
+}
