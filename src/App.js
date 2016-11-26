@@ -3,18 +3,7 @@ import './App.css';
 
 // components
 import { TodoList } from './TodoList';
-
-const TodoForm = ({addTodoItem}) => {
-  // Input Tracker
-  let input;
-  // Return JSX
-  return (
-    <div className="todo-form">
-      <input className="add-text" type="text" ref={node => { input = node;}} placeholder="add todo"/>
-      <a className="add-btn" onClick={() => { if(input.value !== "")addTodoItem(input.value); input.value = '';}}> <i className="fa fa-plus"></i> </a>
-    </div>
-  );
-};
+import { TodoForm } from './TodoForm';
 
 class App extends Component {
   constructor(props) {
@@ -43,11 +32,9 @@ class App extends Component {
     this.toggleComplete = this.toggleComplete.bind(this);
   }
 
-  addTodoItem(val){
-    // Assemble data
-    const todo = {text: val, complete: false}
+  addTodoItem(text){
     // Update data
-    this.state.todos.push(todo);
+    this.state.todos.push({text: text, complete: false});
     // Update state
     this.setState({todos: this.state.todos});
   }
